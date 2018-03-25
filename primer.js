@@ -27,4 +27,27 @@ var myFuncThree = function (nameFunction) {
 console.log(myFuncThree(function () {
     return 'Adam func in func';
 }));
-// ghh
+console.log('========================');
+var messageFunction = function (name, weather) {
+    var message = "Hello, Adam";
+    if (weather == 'sunny') {
+        var message_1 = 'It is nice day';
+        console.log(message_1);
+    }
+    else {
+        var message_2 = 'It is ' + weather + ' today';
+        console.log(message_2);
+    }
+    console.log(message);
+};
+messageFunction('Adam', "raining");
+console.log('========================');
+var myGlobalVar = "apples";
+var myFunc = function (name) {
+    var myLocalVar = "sunny";
+    var innerFunction = function () {
+        return ("Hello " + name + ". Today is " + myLocalVar + '.');
+    };
+    return innerFunction();
+};
+console.log(myFunc('Adam'));
