@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "core-js": "*",
+    "classlist.js": "*",
+    "systemjs": "*",
+    "bootstrap": "*"
+
+  },
+  "devDependencies": {
+    "lite-server": "*",
+    "typescript": "*",
+    "typings": "*",
+    "concurrently": "*"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run tscwatch\" \"npm run lite\" ",
+    "tsc": "tsc",
+    "tscwatch": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings"
+  }
+}
