@@ -51,3 +51,9 @@ var myFunc = function (name) {
     return innerFunction();
 };
 console.log(myFunc('Adam'));
+console.log('===========Строковые шаблоны=============');
+var messageFunction = function (weather) {
+    var message = "It is " + weather + " today";
+    console.log(message);
+};
+messageFunction("sunny");

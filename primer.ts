@@ -53,11 +53,19 @@ let myFunc = function (name) {
     let myLocalVar = "sunny";
     let innerFunction = function () {
         return ("Hello " + name + ". Today is " + myLocalVar + '.' );
-    }
+    };
     return innerFunction();
-}
+};
 
 console.log(myFunc('Adam'));
+
+console.log('===========Строковые шаблоны=============');
+
+let messageFunction = function (weather) {
+    let message = `It is ${weather} today`;
+    console.log(message);
+};
+messageFunction("sunny");
 
 
 
