@@ -1,3 +1,11 @@
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var myFunc = function () {
     console.log('This is a statement');
 };
@@ -62,3 +70,71 @@ var firstVal = "5";
 var secondVal = "5";
 var result = Number(firstVal) + Number(secondVal);
 console.log(result);
+console.log('===========Создание массива=============');
+var myArray = new Array();
+myArray[0] = 100;
+myArray[1] = "Adam";
+myArray[2] = true;
+// чтение элемента массив
+console.log("Index 0: " + myArray[0]);
+console.log('===========перебор элементов массива for=============');
+for (var i = 0; i < myArray.length; i++) {
+    console.log("Index " + i + ": " + myArray[i]);
+}
+console.log('-------функциональный подход------');
+var elTime = document.getElementById('time');
+var oneSecond = function () { return 1000; };
+var getCurrentTime = function () { return new Date(); };
+var clear = function () { return console.clear(); };
+var log = function (message) { return elTime.innerHTML = message; };
+var abstractClockTime = function (date) {
+    return ({
+        hours: date.getHours(),
+        minutes: date.getMinutes(),
+        seconds: date.getSeconds()
+    });
+};
+var civilianHours = function (clockTime) {
+    return (__assign({}, clockTime, { hours: (clockTime.hours > 12) ?
+            clockTime.hours - 12 :
+            clockTime.hours }));
+};
+var appendAMPM = function (clockTime) {
+    return (__assign({}, clockTime, { ampm: (clockTime.hours >= 12) ? "PM" : "AM" }));
+};
+var display = function (target) { return function (time) { return target(time); }; };
+var formatClock = function (format) {
+    return function (time) {
+        return format.replace("hh", time.hours)
+            .replace("mm", time.minutes)
+            .replace("ss", time.seconds)
+            .replace("tt", time.ampm);
+    };
+};
+var prependZero = function (key) { return function (clockTime) {
+    return (__assign({}, clockTime, (_a = {}, _a[key] = (clockTime[key] < 10) ?
+        "0" + clockTime[key] :
+        clockTime[key], _a)));
+    var _a;
+}; };
+var compose = function () {
+    var fns = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        fns[_i] = arguments[_i];
+    }
+    return function (arg) {
+        return fns.reduce(function (composed, f) { return f(composed); }, arg);
+    };
+};
+var convertToCivilianTime = function (clockTime) {
+    return compose(appendAMPM, civilianHours)(clockTime);
+};
+var doubleDigits = function (civilianTime) {
+    return compose(prependZero("hours"), prependZero("minutes"), prependZero("seconds"))(civilianTime);
+};
+var startTicking = function () {
+    return setInterval(compose(
+    //clear,
+    getCurrentTime, abstractClockTime, convertToCivilianTime, doubleDigits, formatClock("hh:mm:ss tt"), display(log)), oneSecond());
+};
+startTicking();
