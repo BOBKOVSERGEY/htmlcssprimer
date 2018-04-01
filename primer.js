@@ -57,3 +57,8 @@ var messageFunction = function (weather) {
     console.log(message);
 };
 messageFunction("sunny");
+console.log('===========Преобразование строк в числа=============');
+var firstVal = "5";
+var secondVal = "5";
+var result = Number(firstVal) + Number(secondVal);
+console.log(result);

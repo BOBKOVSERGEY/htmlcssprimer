@@ -42,7 +42,6 @@ let messageFunction = function (name, weather) {
         let message = 'It is ' + weather + ' today';
         console.log(message);
     }
-
     console.log(message);
 };
 messageFunction('Adam', "raining");
@@ -66,6 +65,13 @@ let messageFunction = function (weather) {
     console.log(message);
 };
 messageFunction("sunny");
+
+console.log('===========Преобразование строк в числа=============');
+let firstVal = "5";
+let secondVal = "5";
+
+let result = Number(firstVal) + Number(secondVal);
+console.log(result);
 
 
 
