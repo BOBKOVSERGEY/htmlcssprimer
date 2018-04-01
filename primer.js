@@ -112,7 +112,32 @@ var totalValue = products
     .filter(function (item) { return item.stock > 0; })
     .reduce(function (prev, item) { return prev + (item.price * item.stock); }, 0);
 console.log("Total value: $" + totalValue.toFixed(2));
-console.log('-------функциональный подход------');
+console.log('===========объекты =============');
+var myData = {
+    name: "Adam",
+    weather: "sunny",
+    printMessage: function () {
+        console.log("Hello " + this.name, ". ");
+        console.log("Today is " + this.weather, ". ");
+    }
+};
+// обращение к методу объекта
+myData.printMessage();
+console.log('=========== определение класса =============');
+var myClass = /** @class */ (function () {
+    function myClass(name, weather) {
+        this.name = name;
+        this.weather = weather;
+    }
+    myClass.prototype.printMessages = function () {
+        console.log("Hello " + this.name, ". ");
+        console.log("Today is " + this.weather, ". ");
+    };
+    return myClass;
+}());
+var myDataOne = new myClass("Adam", "sunny");
+myDataOne.printMessages();
+console.log('-------декларативный подход------');
 var elTime = document.getElementById('time');
 var oneSecond = function () { return 1000; };
 var getCurrentTime = function () { return new Date(); };

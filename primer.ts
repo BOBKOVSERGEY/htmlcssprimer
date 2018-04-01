@@ -123,8 +123,36 @@ let totalValue = products
     .reduce((prev, item) => prev + (item.price * item.stock), 0)
 console.log("Total value: $" + totalValue.toFixed(2));
 
+console.log('===========объекты =============');
 
-console.log('-------функциональный подход------');
+let myData = {
+    name: "Adam",
+    weather: "sunny",
+    printMessage: function() {
+        console.log("Hello " + this.name = ". ");
+        console.log("Today is " + this.weather = ". ");
+    }
+}
+
+// обращение к методу объекта
+myData.printMessage();
+
+console.log('=========== определение класса =============');
+class myClass {
+    constructor(name, weather) {
+        this.name = name;
+        this.weather = weather;
+    }
+    printMessages() {
+        console.log("Hello " + this.name = ". ");
+        console.log("Today is " + this.weather = ". ");
+    }
+}
+
+let myDataOne = new myClass("Adam", "sunny");
+myDataOne.printMessages();
+
+console.log('-------декларативный подход------');
 const elTime = document.getElementById('time');
 const oneSecond = () => 1000
 const getCurrentTime = () => new Date()
